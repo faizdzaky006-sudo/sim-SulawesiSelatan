@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website Resmi Pemerintah Provinsi Sulawesi Selatan</title>
+    <meta name="description" content="Website resmi Pemerintah Provinsi Sulawesi Selatan">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --bs-primary: #2b66bf;
+            --bs-secondary: #000;
+        }
+        
+        .bg-primary {
+            background-color: var(--bs-primary) !important;
+        }
+        
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1a4a8f;
+            border-color: #1a4a8f;
+        }
+
+        /* Dashboard Layout */
+        .sidebar {
+            background: linear-gradient(180deg, var(--bs-primary) 0%, #1a4a8f 100%);
+            color: white;
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+            margin-bottom: 5px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: white;
+        }
+
+        .sidebar .nav-link i {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Cards */
+        .stats-card {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats-card .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(43, 102, 191, 0.9), rgba(43, 102, 191, 0.8)), 
+                        url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Profile Sections */
+        .profile-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            border-bottom: 2px solid var(--bs-primary);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            color: var(--bs-primary);
+        }
+
+        /* Region Cards */
+        .region-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .region-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .region-card img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* Quick Stats */
+        .stat-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--bs-primary);
+            margin-bottom: 10px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Table Styles */
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(43, 102, 191, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                min-height: auto;
+                position: static;
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+            
+            .hero-section {
+                padding: 40px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Tourist Spots */
+        .tourist-spot {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--bs-primary);
+            background-color: #f8f9fa;
+            border-radius: 0 5px 5px 0;
+            transition: all 0.3s;
+        }
+
+        .tourist-spot:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Badge Custom */
+        .badge-city {
+            background-color: #2b66bf !important;
+        }
+        
+        .badge-regency {
+            background-color: #198754 !important;
+        }
+        
+        .badge-tourism {
+            background-color: #fd7e14 !important;
+        }
+        
+        .badge-agriculture {
+            background-color: #20c997 !important;
+        }
+        
+        .badge-maritime {
+            background-color: #0dcaf0 !important;
+        }
+
+        /* Map Container */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home" onclick="showSection('home')">
+                <div class="bg-white p-2 rounded me-3">
+                    <div class="text-primary fw-bold">SULSEL</div>
+                </div>
+                <div>
+                    <h6 class="mb-0">PEMERINTAH PROVINSI</h6>
+                    <h6 class="mb-0 fw-bold">SULAWESI SELATAN</h6>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" onclick="showSection('home')">
+                            <i class="bi bi-house-door"></i> Beranda
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile" onclick="showSection('profile')">
+                            <i class="bi bi-info-circle"></i> Tentang
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#kabupaten" onclick="showSection('kabupaten')">
+                            <i class="bi bi-building"></i> Kabupaten
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#potensi" onclick="showSection('potensi')">
+                            <i class="bi bi-gem"></i> Potensi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#kontak" onclick="showSection('kontak')">
+                            <i class="bi bi-telephone"></i> Kontak
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid flex-grow-1">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 col-md-3 p-0">
+                <div class="sidebar">
+                    <div class="p-4">
+                        <h5 class="text-center mb-4">MENU NAVIGASI</h5>
+                        <nav class="nav flex-column">
+                            <a class="nav-link active" href="#home" onclick="showSection('home')">
+                                <i class="bi bi-house"></i> Beranda
+                            </a>
+                            <a class="nav-link" href="#profile" onclick="showSection('profile')">
+                                <i class="bi bi-person-badge"></i> Profil
+                            </a>
+                            <a class="nav-link" href="#ragam-info" onclick="showSection('ragam-info')">
+                                <i class="bi bi-newspaper"></i> Ragam Informasi
+                            </a>
+                            <a class="nav-link" href="#potensi" onclick="showSection('potensi')">
+                                <i class="bi bi-gem"></i> Potensi Daerah
+                            </a>
+                            <a class="nav-link" href="#kabupaten" onclick="showSection('kabupaten')">
+                                <i class="bi bi-building"></i> Kabupaten/Kota
+                            </a>
+                            <a class="nav-link" href="#ppdi" onclick="showSection('ppdi')">
+                                <i class="bi bi-database"></i> PPDI
+                            </a>
+                            <a class="nav-link" href="#ipkd" onclick="showSection('ipkd')">
+                                <i class="bi bi-bar-chart"></i> IPKD
+                            </a>
+                            <a class="nav-link" href="#kontak" onclick="showSection('kontak')">
+                                <i class="bi bi-envelope"></i> Kontak
+                            </a>
+                        </nav>
+                        
+                        <hr class="bg-light my-4">
+                        
+                        <div class="text-center">
+                            <small class="text-light opacity-75">Selamat Datang di</small>
+                            <h6 class="mt-2">Portal Resmi</h6>
+                            <h5 class="fw-bold">Sulawesi Selatan</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-10 col-md-9 p-0">
+                <div class="main-content">
+                    
+                    <!-- Home Content -->
+                    <div id="home" class="content-section active">
+                        <!-- Hero Section -->
+                        <div class="hero-section text-center">
+                            <h1 class="display-4 fw-bold mb-3">SELAMAT DATANG</h1>
+                            <h2 class="mb-4">DI PORTAL RESMI PEMERINTAH PROVINSI SULAWESI SELATAN</h2>
+                            <p class="lead mb-4">"Sulawesi Selatan Unggul, Sejahtera, dan Berkeadilan"</p>
+                            <a href="#profile" class="btn btn-light btn-lg" onclick="showSection('profile')">
+                                <i class="bi bi-info-circle me-2"></i> Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="row mb-5">
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <div class="stat-item">
+                                    <div class="number">24</div>
+                                    <div>Kabupaten/Kota</div>
+                                    <small class="text-muted">3 Kota, 21 Kabupaten</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <div class="stat-item">
+                                    <div class="number">8.9 JT</div>
+                                    <div>Jumlah Penduduk</div>
+                                    <small class="text-muted">Tahun 2023</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <div class="stat-item">
+                                    <div class="number">46.717</div>
+                                    <div>Luas Wilayah (km²)</div>
+                                    <small class="text-muted">± 2.5% dari Indonesia</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <div class="stat-item">
+                                    <div class="number">14+</div>
+                                    <div>Suku Bangsa</div>
+                                    <small class="text-muted">Budaya yang Kaya</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Peta Wilayah -->
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-map me-2"></i>Peta Wilayah Sulawesi Selatan
+                            </h3>
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4082027.055991499!2d118.03852756806415!3d-4.693398392780477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d5b0f8c9f2b5b5f%3A0x301e8f1fc28b8b0!2sSouth%20Sulawesi!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Profil Singkat -->
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-info-circle me-2"></i>Profil Singkat Provinsi
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p class="lead">Sulawesi Selatan adalah salah satu provinsi di Indonesia yang terletak di ujung selatan Pulau Sulawesi dengan ibu kota Makassar. Sebagai gerbang Indonesia Timur, provinsi ini memiliki peran strategis dalam perdagangan dan budaya.</p>
+                                    
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <h5><i class="bi bi-geo-alt text-primary me-2"></i>Letak Geografis</h5>
+                                            <div class="card border-0 bg-light">
+                                                <div class="card-body">
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="mb-2"><i class="bi bi-caret-right-fill text-primary me-2"></i><strong>Utara:</strong> Sulawesi Barat & Tengah</li>
+                                                        <li class="mb-2"><i class="bi bi-caret-right-fill text-primary me-2"></i><strong>Selatan:</strong> Laut Flores</li>
+                                                        <li class="mb-2"><i class="bi bi-caret-right-fill text-primary me-2"></i><strong>Timur:</strong> Teluk Bone</li>
+                                                        <li><i class="bi bi-caret-right-fill text-primary me-2"></i><strong>Barat:</strong> Selat Makassar</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5><i class="bi bi-star text-primary me-2"></i>Keunggulan</h5>
+                                            <div class="card border-0 bg-light">
+                                                <div class="card-body">
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Gerbang Indonesia Timur</li>
+                                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Lumbung Padi Nasional</li>
+                                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Destinasi Wisata Budaya</li>
+                                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Potensi Maritim Besar</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-primary">
+                                        <div class="card-header bg-primary text-white">
+                                            <h5 class="mb-0"><i class="bi bi-award me-2"></i>Fakta Menarik</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <i class="bi bi-shield-check display-1 text-primary"></i>
+                                            </div>
+                                            <h6 class="card-title">Lambang "Toddo Puli"</h6>
+                                            <p class="card-text">Bermakna tekad dan keyakinan yang kuat dalam membangun daerah dengan prinsip keteguhan hati.</p>
+                                            <hr>
+                                            <small class="text-muted">
+                                                <i class="bi bi-info-circle me-1"></i>
+                                                Motto: "Toddo Puli" (Tetap Pada Pendirian)
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Berita Terbaru -->
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-newspaper me-2"></i>Berita Terbaru
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <span class="badge bg-primary mb-2">Pembangunan</span>
+                                            <h6 class="card-title">Pembangunan Infrastruktur Jalan Tersambung 95%</h6>
+                                            <p class="card-text small text-muted">Target pembangunan jalan provinsi tahun 2024 hampir tercapai dengan penyelesaian ruas jalan sepanjang 250 km.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <small class="text-muted">
+                                                    <i class="bi bi-calendar me-1"></i>10 Jan 2024
+                                                </small>
+                                                <a href="#" class="text-primary small">Baca Selengkapnya →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <span class="badge bg-success mb-2">Ekonomi</span>
+                                            <h6 class="card-title">Pertumbuhan Ekonomi Sulsel Capai 6.8%</h6>
+                                            <p class="card-text small text-muted">Tertinggi se-Indonesia Timur pada kuartal III 2024, didorong oleh sektor pertanian dan pariwisata.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <small class="text-muted">
+                                                    <i class="bi bi-calendar me-1"></i>8 Jan 2024
+                                                </small>
+                                                <a href="#" class="text-primary small">Baca Selengkapnya →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <span class="badge bg-info mb-2">Pendidikan</span>
+                                            <h6 class="card-title">Beasiswa Pendidikan Diteruskan untuk 10.000 Siswa</h6>
+                                            <p class="card-text small text-muted">Program beasiswa untuk siswa berprestasi dari keluarga kurang mampu akan diteruskan dengan anggaran Rp 50 miliar.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <small class="text-muted">
+                                                    <i class="bi bi-calendar me-1"></i>5 Jan 2024
+                                                </small>
+                                                <a href="#" class="text-primary small">Baca Selengkapnya →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Content -->
+                    <div id="profile" class="content-section">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <!-- Visi Misi -->
+                                <div class="profile-section">
+                                    <h3 class="profile-header">
+                                        <i class="bi bi-bullseye me-2"></i>Visi dan Misi
+                                    </h3>
+                                    <div class="mb-4">
+                                        <h4 class="text-primary mb-3">Visi</h4>
+                                        <div class="alert alert-primary bg-primary-subtle border-primary">
+                                            <h4 class="alert-heading text-center">"Sulawesi Selatan Unggul, Sejahtera, dan Berkeadilan"</h4>
+                                            <p class="mb-0 text-center">Visi ini menjadi panduan pembangunan Sulawesi Selatan menuju kemajuan yang merata dan berkelanjutan.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <h4 class="text-primary mb-3">Misi</h4>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-primary shadow-sm">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                                            <i class="bi bi-people-fill" style="font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <h5 class="card-title text-primary mb-0">Misi 1</h5>
+                                                    </div>
+                                                    <p class="card-text">Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berkarakter melalui pendidikan dan pelatihan yang berkualitas.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-primary shadow-sm">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                                            <i class="bi bi-tools" style="font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <h5 class="card-title text-primary mb-0">Misi 2</h5>
+                                                    </div>
+                                                    <p class="card-text">Memperkuat infrastruktur dan konektivitas untuk mendukung pertumbuhan ekonomi dan pemerataan pembangunan.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-primary shadow-sm">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                                            <i class="bi bi-currency-exchange" style="font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <h5 class="card-title text-primary mb-0">Misi 3</h5>
+                                                    </div>
+                                                    <p class="card-text">Mengembangkan ekonomi berbasis potensi lokal yang berkelanjutan dengan memperhatikan kearifan lokal dan lingkungan.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100 border-primary shadow-sm">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                                            <i class="bi bi-shield-check" style="font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <h5 class="card-title text-primary mb-0">Misi 4</h5>
+                                                    </div>
+                                                    <p class="card-text">Mewujudkan tata kelola pemerintahan yang baik dan bersih melalui transparansi, akuntabilitas, dan partisipasi masyarakat.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Struktur Organisasi -->
+                                <div class="profile-section">
+                                    <h3 class="profile-header">
+                                        <i class="bi bi-diagram-3 me-2"></i>Struktur Organisasi
+                                    </h3>
+                                    <div class="text-center">
+                                        <div class="d-flex flex-column align-items-center mb-4">
+                                            <!-- Gubernur -->
+                                            <div class="p-4 bg-primary text-white rounded mb-3" style="width: 80%;">
+                                                <h5 class="mb-1">GUBERNUR</h5>
+                                                <p class="mb-0 fw-bold">H. Andi Sudirman Sulaiman</p>
+                                                <small>Periode 2024-2029</small>
+                                            </div>
+                                            
+                                            <!-- Wakil Gubernur -->
+                                            <div class="row justify-content-center mt-3" style="width: 100%;">
+                                                <div class="col-md-6">
+                                                    <div class="p-3 bg-info text-white rounded mb-3">
+                                                        <h6 class="mb-1">WAKIL GUBERNUR</h6>
+                                                        <p class="mb-0 fw-bold">Fatmawati Rusdi</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Sekretaris & Asisten -->
+                                            <div class="row justify-content-center mt-3" style="width: 100%;">
+                                                <div class="col-md-3 col-6 mb-2">
+                                                    <div class="p-3 bg-success text-white rounded">
+                                                        <h6 class="mb-0">SEKRETARIS DAERAH</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-6 mb-2">
+                                                    <div class="p-3 bg-success text-white rounded">
+                                                        <h6 class="mb-0">ASISTEN 1</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-6">
+                                                    <div class="p-3 bg-success text-white rounded">
+                                                        <h6 class="mb-0">ASISTEN 2</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-6">
+                                                    <div class="p-3 bg-success text-white rounded">
+                                                        <h6 class="mb-0">ASISTEN 3</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <!-- Profil Pemimpin -->
+                                <div class="profile-section">
+                                    <h3 class="profile-header">
+                                        <i class="bi bi-person-badge me-2"></i>Profil Pemimpin
+                                    </h3>
+                                    <div class="text-center mb-4">
+                                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" 
+                                             style="width: 150px; height: 150px;">
+                                            <i class="bi bi-person-fill" style="font-size: 4rem;"></i>
+                                        </div>
+                                        <h4>Gubernur</h4>
+                                        <h5 class="text-primary">H. Andi Sudirman Sulaiman</h5>
+                                        <p class="text-muted">Periode 2024-2029</p>
+                                        <div class="mt-3">
+                                            <a href="#ragam-info" class="btn btn-outline-primary btn-sm" onclick="showSection('ragam-info')">
+                                                <i class="bi bi-info-circle me-1"></i> Selengkapnya
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <h5 class="text-primary mt-4 mb-3">
+                                        <i class="bi bi-list-task me-2"></i>Tugas dan Fungsi
+                                    </h5>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill text-primary mt-1 me-2"></i>
+                                            <span>Memimpin penyelenggaraan pemerintahan daerah</span>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill text-primary mt-1 me-2"></i>
+                                            <span>Membina dan mengawasi penyelenggaraan pemerintahan</span>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill text-primary mt-1 me-2"></i>
+                                            <span>Mengajukan rancangan Peraturan Daerah</span>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill text-primary mt-1 me-2"></i>
+                                            <span>Menyusun dan mengajukan rancangan APBD</span>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-check-circle-fill text-primary mt-1 me-2"></i>
+                                            <span>Mewakili daerah di dalam dan di luar pengadilan</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Data Kepegawaian -->
+                                <div class="profile-section">
+                                    <h3 class="profile-header">
+                                        <i class="bi bi-people me-2"></i>Data Kepegawaian
+                                    </h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-hover">
+                                            <thead class="table-primary">
+                                                <tr>
+                                                    <th>Jenis Pegawai</th>
+                                                    <th class="text-end">Jumlah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>PNS</td>
+                                                    <td class="text-end">25,430</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PPPK</td>
+                                                    <td class="text-end">3,850</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Honorer</td>
+                                                    <td class="text-end">7,720</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pegawai Kontrak</td>
+                                                    <td class="text-end">2,000</td>
+                                                </tr>
+                                                <tr class="table-active fw-bold">
+                                                    <td>Total</td>
+                                                    <td class="text-end">39,000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-primary" style="width: 65%">PNS 65%</div>
+                                            <div class="progress-bar bg-success" style="width: 10%">PPPK 10%</div>
+                                            <div class="progress-bar bg-warning" style="width: 20%">Honorer 20%</div>
+                                            <div class="progress-bar bg-info" style="width: 5%">Kontrak 5%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ragam Informasi Content -->
+                    <div id="ragam-info" class="content-section">
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-newspaper me-2"></i>Ragam Informasi
+                            </h3>
+                            
+                            <ul class="nav nav-tabs nav-fill mb-4" id="infoTab">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#artikel">
+                                        <i class="bi bi-file-text me-2"></i>Artikel
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#gubernur">
+                                        <i class="bi bi-person-square me-2"></i>Gubernur
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#dinas">
+                                        <i class="bi bi-building me-2"></i>Dinas
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content p-4 border border-top-0 rounded-bottom">
+                                <!-- Artikel -->
+                                <div class="tab-pane fade show active" id="artikel">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card h-100 border-0 shadow-sm">
+                                                <div class="card-img-top bg-secondary" style="height: 180px; display: flex; align-items: center; justify-content: center;">
+                                                    <i class="bi bi-newspaper text-white" style="font-size: 3rem;"></i>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Praperadilan Irman YL Dikabulkan</h6>
+                                                    <p class="card-text small">Putusan praperadilan dibacakan oleh Hakim Tunggal di Pengadilan Negeri Makassar, Rabu (7/1/2025).</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">Berita Hukum</small>
+                                                        <a href="#" class="btn btn-sm btn-outline-primary">Baca</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card h-100 border-0 shadow-sm">
+                                                <div class="card-img-top bg-secondary" style="height: 180px; display: flex; align-items: center; justify-content: center;">
+                                                    <i class="bi bi-newspaper text-white" style="font-size: 3rem;"></i>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Ketua DPRD Soppeng dan Kabid BKPSDM</h6>
+                                                    <p class="card-text small">Permintaan damai dengan nada ancaman antara Ketua DPRD Soppeng dan Kabid BKPSDM.</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">Berita Politik</small>
+                                                        <a href="#" class="btn btn-sm btn-outline-primary">Baca</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card h-100 border-0 shadow-sm">
+                                                <div class="card-img-top bg-secondary" style="height: 180px; display: flex; align-items: center; justify-content: center;">
+                                                    <i class="bi bi-newspaper text-white" style="font-size: 3rem;"></i>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Evaluasi Penempatan PPPK</h6>
+                                                    <p class="card-text small">RDP Komisi I DPRD Soppeng membahas penempatan PPPK yang memicu ketegangan.</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">Berita SDM</small>
+                                                        <a href="#" class="btn btn-sm btn-outline-primary">Baca</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Gubernur -->
+                                <div class="tab-pane fade" id="gubernur">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="bg-primary text-white rounded p-4 text-center">
+                                                <i class="bi bi-person-fill display-1 mb-3"></i>
+                                                <h4>Gubernur</h4>
+                                                <h5 class="mb-0">H. Andi Sudirman Sulaiman</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h4>Profil Gubernur Sulawesi Selatan</h4>
+                                            <p>Andi Sudirman Sulaiman lahir di Dusun Bakunge, Desa Mappesangka, Kecamatan Ponre, Kabupaten Bone pada 25 September 1983. Ia merupakan anak ke-11 dari 12 bersaudara. Ayahnya adalah anggota TNI sekaligus petani, sedangkan ibunya adalah ibu rumah tangga.</p>
+                                            
+                                            <h5 class="mt-4"><i class="bi bi-calendar-event me-2"></i>Jadwal Kegiatan</h5>
+                                            <div class="list-group">
+                                                <div class="list-group-item">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <h6 class="mb-1">Rapat Koordinasi</h6>
+                                                            <small class="text-muted">Pembahasan APBD 2024</small>
+                                                        </div>
+                                                        <span class="badge bg-primary">08:00 - 10:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="list-group-item">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <h6 class="mb-1">Kunjungan Kerja</h6>
+                                                            <small class="text-muted">Kabupaten Gowa</small>
+                                                        </div>
+                                                        <span class="badge bg-primary">10:30 - 15:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="list-group-item">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <h6 class="mb-1">Penandatanganan MoU</h6>
+                                                            <small class="text-muted">Kerja sama dengan PT XYZ</small>
+                                                        </div>
+                                                        <span class="badge bg-primary">15:30 - 17:00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dinas -->
+                                <div class="tab-pane fade" id="dinas">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="text-primary mb-3"><i class="bi bi-building me-2"></i>Dinas Teknis</h5>
+                                            <div class="list-group">
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-book text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Pendidikan</h6>
+                                                        <small class="text-muted">Pengelolaan pendidikan daerah</small>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-heart-pulse text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Kesehatan</h6>
+                                                        <small class="text-muted">Pelayanan kesehatan masyarakat</small>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-tools text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas PUPR</h6>
+                                                        <small class="text-muted">Infrastruktur dan pemukiman</small>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-building text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Perindustrian</h6>
+                                                        <small class="text-muted">Pengembangan industri</small>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="text-primary mb-3"><i class="bi bi-building me-2"></i>Dinas Pendukung</h5>
+                                            <div class="list-group">
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-shop text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Perdagangan</h6>
+                                                        <small class="text-muted">Perdagangan dan pasar</small>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-airplane text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Pariwisata</h6>
+                                                        <small class="text-muted">Pengembangan pariwisata</small>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-tree text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Kehutanan</h6>
+                                                        <small class="text-muted">Pengelolaan hutan</small>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                                                    <i class="bi bi-droplet text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-1">Dinas Perikanan</h6>
+                                                        <small class="text-muted">Pengelolaan perikanan</small>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Potensi Daerah Content -->
+                    <div id="potensi" class="content-section">
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-gem me-2"></i>Potensi Daerah Sulawesi Selatan
+                            </h3>
+                            <p class="lead mb-4">Sulawesi Selatan memiliki berbagai potensi alam yang menjadi tulang punggung perekonomian daerah.</p>
+                            
+                            <div class="row g-4">
+                                <!-- Pertambangan -->
+                                <div class="col-md-6">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <div class="icon-wrapper bg-warning">
+                                                <i class="bi bi-minecart text-white" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h5 class="card-title">Pertambangan</h5>
+                                            <p class="card-text">Cadangan nikel, bijih besi, emas, dan marmer dengan nilai ekonomi tinggi.</p>
+                                            <div class="progress mb-2" style="height: 10px;">
+                                                <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                            </div>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Nikel: 2,4 milyar ton</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Bijih Besi: 100 juta ton</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Emas: Potensi besar di Luwu</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Kelautan dan Perikanan -->
+                                <div class="col-md-6">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <div class="icon-wrapper bg-info">
+                                                <i class="bi bi-water text-white" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h5 class="card-title">Kelautan dan Perikanan</h5>
+                                            <p class="card-text">Potensi perikanan tangkap 1,2 juta ton/tahun dengan varietas beragam.</p>
+                                            <div class="progress mb-2" style="height: 10px;">
+                                                <div class="progress-bar bg-info" style="width: 75%"></div>
+                                            </div>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Rumput Laut: Produsen terbesar nasional</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Perikanan Budidaya: 500.000 ton/tahun</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Garaman: 50.000 hektar lahan garam</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pertanian -->
+                                <div class="col-md-6">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <div class="icon-wrapper bg-success">
+                                                <i class="bi bi-tree text-white" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h5 class="card-title">Pertanian</h5>
+                                            <p class="card-text">Lumbung padi nasional dengan produksi 5 juta ton/tahun beras.</p>
+                                            <div class="progress mb-2" style="height: 10px;">
+                                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                                            </div>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Padi: 1,2 juta hektar sawah</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Jagung: 800.000 ton/tahun</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Kedelai: 150.000 ton/tahun</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Perkebunan -->
+                                <div class="col-md-6">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <div class="icon-wrapper bg-success">
+                                                <i class="bi bi-tree-fill text-white" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h5 class="card-title">Perkebunan</h5>
+                                            <p class="card-text">Kakao, kelapa sawit, cengkeh, dan vanili berkualitas ekspor.</p>
+                                            <div class="progress mb-2" style="height: 10px;">
+                                                <div class="progress-bar bg-success" style="width: 80%"></div>
+                                            </div>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Kakao: 300.000 hektar</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Kelapa Sawit: 400.000 hektar</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Cengkeh: 50.000 hektar</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Peternakan -->
+                                <div class="col-md-6">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <div class="icon-wrapper bg-danger">
+                                                <i class="bi bi-egg-fried text-white" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h5 class="card-title">Peternakan</h5>
+                                            <p class="card-text">Sapi, kerbau, kambing, dan unggas untuk kebutuhan lokal dan ekspor.</p>
+                                            <div class="progress mb-2" style="height: 10px;">
+                                                <div class="progress-bar bg-danger" style="width: 70%"></div>
+                                            </div>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Sapi: 1,2 juta ekor</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Kerbau: 350.000 ekor</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Ungas: 25 juta ekor</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Kehutanan -->
+                                <div class="col-md-6">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <div class="icon-wrapper bg-success">
+                                                <i class="bi bi-tree text-white" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                            <h5 class="card-title">Kehutanan</h5>
+                                            <p class="card-text">Hutan produksi dan konservasi seluas 2,1 juta hektar.</p>
+                                            <div class="progress mb-2" style="height: 10px;">
+                                                <div class="progress-bar bg-success" style="width: 65%"></div>
+                                            </div>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Hutan Produksi: 1,5 juta ha</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Hutan Lindung: 400.000 ha</li>
+                                                <li><i class="bi bi-check-circle-fill text-success me-2"></i>Hasil Hutan: Rotan, kayu, damar</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kabupaten/Kota Content -->
+                    <div id="kabupaten" class="content-section">
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-building me-2"></i>Kabupaten dan Kota di Sulawesi Selatan
+                            </h3>
+                            <p class="lead mb-4">Sulawesi Selatan terdiri dari 24 kabupaten/kota dengan keunikan dan potensi masing-masing.</p>
+                            
+                            <!-- Search and Filter -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                        <input type="text" class="form-control" id="searchKabupaten" placeholder="Cari kabupaten/kota...">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <button class="btn btn-outline-primary btn-sm active" onclick="filterRegions('all')">Semua</button>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="filterRegions('kota')">Kota</button>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="filterRegions('kabupaten')">Kabupaten</button>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="filterRegions('pariwisata')">Pariwisata</button>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="filterRegions('pertanian')">Pertanian</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row" id="region-container">
+                                <!-- Data akan diisi oleh JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PPDI Content -->
+                    <div id="ppdi" class="content-section">
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-database me-2"></i>Pusat Pengelolaan Data dan Informasi (PPDI)
+                            </h3>
+                            <p class="lead">PPDI merupakan unit yang bertanggung jawab dalam pengelolaan data dan informasi pemerintah daerah.</p>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h5 class="text-primary mb-3">Fungsi Utama:</h5>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-arrow-right-circle-fill text-primary mt-1 me-3"></i>
+                                            <div>
+                                                <h6 class="mb-1">Pengumpulan Data</h6>
+                                                <p class="mb-0 small">Pengumpulan dan validasi data daerah dari berbagai sumber</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-arrow-right-circle-fill text-primary mt-1 me-3"></i>
+                                            <div>
+                                                <h6 class="mb-1">Basis Data Terpadu</h6>
+                                                <p class="mb-0 small">Pengelolaan basis data terpadu untuk seluruh OPD</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-arrow-right-circle-fill text-primary mt-1 me-3"></i>
+                                            <div>
+                                                <h6 class="mb-1">Analisis Data</h6>
+                                                <p class="mb-0 small">Analisis data untuk perencanaan pembangunan daerah</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex align-items-start">
+                                            <i class="bi bi-arrow-right-circle-fill text-primary mt-1 me-3"></i>
+                                            <div>
+                                                <h6 class="mb-1">Publikasi Statistik</h6>
+                                                <p class="mb-0 small">Publikasi statistik daerah dan indikator pembangunan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-primary mb-3">Sistem Terkait:</h5>
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <i class="bi bi-globe text-primary me-2"></i>
+                                                    <span>Sistem Informasi Geografis (SIG)</span>
+                                                </div>
+                                                <i class="bi bi-chevron-right text-muted"></i>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <i class="bi bi-database text-primary me-2"></i>
+                                                    <span>Data Terbuka Daerah</span>
+                                                </div>
+                                                <i class="bi bi-chevron-right text-muted"></i>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <i class="bi bi-bar-chart text-primary me-2"></i>
+                                                    <span>Statistik Daerah Online</span>
+                                                </div>
+                                                <i class="bi bi-chevron-right text-muted"></i>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <i class="bi bi-file-earmark-text text-primary me-2"></i>
+                                                    <span>Portal Informasi Publik</span>
+                                                </div>
+                                                <i class="bi bi-chevron-right text-muted"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="text-primary mb-3">Layanan PPDI:</h5>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="card text-center h-100 border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <div class="bg-primary-subtle rounded-circle p-4 d-inline-block mb-3">
+                                                <i class="bi bi-database display-5 text-primary"></i>
+                                            </div>
+                                            <h5 class="card-title">Data Terbuka</h5>
+                                            <p class="card-text">Akses data publik secara terbuka untuk penelitian dan pengembangan</p>
+                                            <a href="#" class="btn btn-primary">Akses Data</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card text-center h-100 border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <div class="bg-primary-subtle rounded-circle p-4 d-inline-block mb-3">
+                                                <i class="bi bi-bar-chart display-5 text-primary"></i>
+                                            </div>
+                                            <h5 class="card-title">Statistik Daerah</h5>
+                                            <p class="card-text">Data statistik terkini untuk perencanaan dan evaluasi pembangunan</p>
+                                            <a href="#" class="btn btn-primary">Lihat Statistik</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card text-center h-100 border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <div class="bg-primary-subtle rounded-circle p-4 d-inline-block mb-3">
+                                                <i class="bi bi-file-earmark-text display-5 text-primary"></i>
+                                            </div>
+                                            <h5 class="card-title">Publikasi</h5>
+                                            <p class="card-text">Laporan dan publikasi resmi pemerintah daerah dalam format digital</p>
+                                            <a href="#" class="btn btn-primary">Unduh Publikasi</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IPKD Content -->
+                    <div id="ipkd" class="content-section">
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-bar-chart me-2"></i>Indeks Penyelenggaraan Pemerintahan Daerah (IPKD)
+                            </h3>
+                            <p class="lead">Sistem pengukuran kinerja penyelenggaraan pemerintahan daerah secara komprehensif.</p>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-3 col-6 mb-3">
+                                    <div class="card text-center border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <h2 class="display-4 text-primary fw-bold">85.6</h2>
+                                            <p class="text-muted mb-0">Tata Kelola Pemerintahan</p>
+                                            <small class="text-success"><i class="bi bi-arrow-up me-1"></i>+2.5 dari 2023</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6 mb-3">
+                                    <div class="card text-center border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <h2 class="display-4 text-primary fw-bold">82.3</h2>
+                                            <p class="text-muted mb-0">Pelayanan Publik</p>
+                                            <small class="text-success"><i class="bi bi-arrow-up me-1"></i>+3.1 dari 2023</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6 mb-3">
+                                    <div class="card text-center border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <h2 class="display-4 text-primary fw-bold">88.1</h2>
+                                            <p class="text-muted mb-0">Pengelolaan Keuangan</p>
+                                            <small class="text-success"><i class="bi bi-arrow-up me-1"></i>+1.8 dari 2023</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6 mb-3">
+                                    <div class="card text-center border-primary shadow-sm">
+                                        <div class="card-body">
+                                            <h2 class="display-4 text-primary fw-bold">79.8</h2>
+                                            <p class="text-muted mb-0">Akuntabilitas</p>
+                                            <small class="text-warning"><i class="bi bi-arrow-right me-1"></i>+0.5 dari 2023</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="text-primary mb-3">Perbandingan dengan Provinsi Lain di Sulawesi:</h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th>Peringkat</th>
+                                            <th>Provinsi</th>
+                                            <th>IPKD</th>
+                                            <th>Tata Kelola</th>
+                                            <th>Pelayanan</th>
+                                            <th>Keuangan</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-success">
+                                            <td>1</td>
+                                            <td><strong>Sulawesi Selatan</strong></td>
+                                            <td><strong>85.6</strong></td>
+                                            <td>85.6</td>
+                                            <td>82.3</td>
+                                            <td>88.1</td>
+                                            <td><span class="badge bg-success">Terbaik</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Sulawesi Utara</td>
+                                            <td>82.1</td>
+                                            <td>80.5</td>
+                                            <td>81.2</td>
+                                            <td>84.6</td>
+                                            <td><span class="badge bg-info">Baik</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Gorontalo</td>
+                                            <td>78.9</td>
+                                            <td>77.8</td>
+                                            <td>79.1</td>
+                                            <td>79.8</td>
+                                            <td><span class="badge bg-info">Baik</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Sulawesi Tenggara</td>
+                                            <td>77.5</td>
+                                            <td>76.2</td>
+                                            <td>77.8</td>
+                                            <td>78.5</td>
+                                            <td><span class="badge bg-warning">Cukup</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-8">
+                                    <h5 class="text-primary mb-3">Tren IPKD Sulsel 5 Tahun Terakhir:</h5>
+                                    <div class="bg-light rounded p-4 text-center">
+                                        <div class="chart-container">
+                                            <!-- Chart akan dibuat dengan JavaScript -->
+                                            <canvas id="ipkdChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-primary mb-3">Rekomendasi Perbaikan:</h5>
+                                    <div class="list-group">
+                                        <div class="list-group-item list-group-item-warning d-flex align-items-start">
+                                            <i class="bi bi-exclamation-triangle-fill me-2 mt-1"></i>
+                                            <div>
+                                                <h6 class="mb-1">Transparansi Anggaran</h6>
+                                                <small class="text-muted">Perlu peningkatan transparansi pengelolaan APBD</small>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item list-group-item-warning d-flex align-items-start">
+                                            <i class="bi bi-exclamation-triangle-fill me-2 mt-1"></i>
+                                            <div>
+                                                <h6 class="mb-1">Pelayanan Perizinan</h6>
+                                                <small class="text-muted">Percepatan waktu penyelesaian perizinan</small>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item list-group-item-warning d-flex align-items-start">
+                                            <i class="bi bi-exclamation-triangle-fill me-2 mt-1"></i>
+                                            <div>
+                                                <h6 class="mb-1">Partisipasi Masyarakat</h6>
+                                                <small class="text-muted">Tingkatkan partisipasi dalam perencanaan pembangunan</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kontak Content -->
+                    <div id="kontak" class="content-section">
+                        <div class="profile-section">
+                            <h3 class="profile-header">
+                                <i class="bi bi-envelope me-2"></i>Hubungi Kami
+                            </h3>
+                            
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h5 class="text-primary mb-3">Kirim Pesan</h5>
+                                    <form id="contactForm">
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="name" class="form-label">Nama Lengkap</label>
+                                                <input type="text" class="form-control" id="name" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="subject" class="form-label">Subjek</label>
+                                            <input type="text" class="form-control" id="subject" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message" class="form-label">Pesan</label>
+                                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-send me-2"></i>Kirim Pesan
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h5 class="text-primary mb-3">Informasi Kontak</h5>
+                                    <div class="card border-primary">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start mb-4">
+                                                <i class="bi bi-geo-alt text-primary fs-4 me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Alamat</h6>
+                                                    <p class="mb-0 small">Jl. Urip Sumoharjo No. 269<br>Makassar 90111<br>Sulawesi Selatan</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-start mb-4">
+                                                <i class="bi bi-telephone text-primary fs-4 me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Telepon</h6>
+                                                    <p class="mb-0 small">(0411) 441111<br>Fax: (0411) 442222</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-start mb-4">
+                                                <i class="bi bi-envelope text-primary fs-4 me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Email</h6>
+                                                    <p class="mb-0 small">info@sulselprov.go.id<br>humas@sulselprov.go.id</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-clock text-primary fs-4 me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Jam Kerja</h6>
+                                                    <p class="mb-0 small">Senin - Kamis: 08:00 - 16:00<br>Jumat: 08:00 - 11:00<br>Sabtu - Minggu: Libur</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3"><i class="bi bi-geo-alt me-2"></i>Kontak Kami</h5>
+                    <p class="mb-2">
+                        <i class="bi bi-geo-alt-fill me-2"></i>Jl. Urip Sumoharjo No. 269, Makassar 90111
+                    </p>
+                    <p class="mb-2">
+                        <i class="bi bi-telephone-fill me-2"></i>(0411) 441111
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-envelope-fill me-2"></i>info@sulselprov.go.id
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3"><i class="bi bi-link me-2"></i>Tautan Cepat</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#home" onclick="showSection('home')" class="text-white text-decoration-none">Beranda</a></li>
+                                <li class="mb-2"><a href="#profile" onclick="showSection('profile')" class="text-white text-decoration-none">Profil</a></li>
+                                <li><a href="#kontak" onclick="showSection('kontak')" class="text-white text-decoration-none">Kontak</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#ragam-info" onclick="showSection('ragam-info')" class="text-white text-decoration-none">Berita</a></li>
+                                <li class="mb-2"><a href="#kabupaten" onclick="showSection('kabupaten')" class="text-white text-decoration-none">Daerah</a></li>
+                                <li><a href="#potensi" onclick="showSection('potensi')" class="text-white text-decoration-none">Potensi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3"><i class="bi bi-share me-2"></i>Terhubung dengan Kami</h5>
+                    <div class="d-flex gap-3 mb-3">
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white fs-4">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="small text-light opacity-75 mb-0">
+                        Selalu pantau informasi terkini melalui media sosial resmi kami.
+                    </p>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">
+                        © 2024 Pemerintah Provinsi Sulawesi Selatan. Hak Cipta Dilindungi.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <span class="text-light opacity-75">Dikembangkan oleh:</span> 
+                        <strong>Tim Teknologi Informasi Sulsel</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js for Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Data Kabupaten/Kota
+        const regionsData = [
+            {
+                id: 1,
+                name: "Kota Makassar",
+                type: "kota",
+                category: ["ibu-kota", "perdagangan", "pariwisata"],
+                population: "1.5 juta",
+                area: "175.77 km²",
+                description: "Ibu kota provinsi dengan pelabuhan terbesar di Indonesia Timur dan pusat perdagangan regional.",
+                tags: ["Kota", "Ibu Kota", "Pariwisata"]
+            },
+            {
+                id: 2,
+                name: "Kota Palopo",
+                type: "kota",
+                category: ["pegunungan", "pariwisata"],
+                population: "180 ribu",
+                area: "247.52 km²",
+                description: "Kota di kawasan pegunungan dengan udara sejuk dan panorama alam yang indah.",
+                tags: ["Kota", "Pegunungan"]
+            },
+            {
+                id: 3,
+                name: "Kota Parepare",
+                type: "kota",
+                category: ["pelabuhan", "pariwisata"],
+                population: "150 ribu",
+                area: "99.33 km²",
+                description: "Kota pelabuhan penting di pesisir barat Sulawesi Selatan dengan panorama Teluk Parepare.",
+                tags: ["Kota", "Pelabuhan"]
+            },
+            {
+                id: 4,
+                name: "Kabupaten Bantaeng",
+                type: "kabupaten",
+                category: ["pariwisata", "pertanian"],
+                population: "190 ribu",
+                area: "395.83 km²",
+                description: "Daerah dengan pantai yang indah dan pertanian yang subur.",
+                tags: ["Kabupaten", "Pariwisata", "Pertanian"]
+            },
+            {
+                id: 5,
+                name: "Kabupaten Barru",
+                type: "kabupaten",
+                category: ["pesisir", "perikanan", "pariwisata"],
+                population: "170 ribu",
+                area: "1.174 km²",
+                description: "Wilayah pesisir dengan potensi perikanan dan pariwisata bahari.",
+                tags: ["Kabupaten", "Pesisir", "Perikanan"]
+            },
+            {
+                id: 6,
+                name: "Kabupaten Bone",
+                type: "kabupaten",
+                category: ["pertanian", "pariwisata"],
+                population: "850 ribu",
+                area: "4.559 km²",
+                description: "Lumbung padi Sulawesi Selatan dengan sawah terluas dan produksi beras tertinggi.",
+                tags: ["Kabupaten", "Pertanian", "Lumbung Padi"]
+            },
+            {
+                id: 7,
+                name: "Kabupaten Bulukumba",
+                type: "kabupaten",
+                category: ["maritim", "pariwisata"],
+                population: "430 ribu",
+                area: "1.155 km²",
+                description: "Pembuat kapal tradisional Phinisi yang terkenal hingga mancanegara.",
+                tags: ["Kabupaten", "Maritim", "Kapal Phinisi"]
+            },
+            {
+                id: 8,
+                name: "Kabupaten Tana Toraja",
+                type: "kabupaten",
+                category: ["pariwisata", "budaya"],
+                population: "280 ribu",
+                area: "2.054 km²",
+                description: "Destinasi wisata budaya internasional dengan rumah adat Tongkonan dan upacara Rambu Solo.",
+                tags: ["Kabupaten", "Pariwisata", "Budaya", "Internasional"]
+            }
+        ];
+
+        // Function to show/hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update active nav link in sidebar
+            document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update active nav link in navbar
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            return false;
+        }
+
+        // Function to render regions
+        function renderRegions(filter = 'all') {
+            const container = document.getElementById('region-container');
+            let filteredRegions = regionsData;
+            
+            if (filter !== 'all') {
+                if (filter === 'kota' || filter === 'kabupaten') {
+                    filteredRegions = regionsData.filter(region => region.type === filter);
+                } else if (filter === 'pariwisata') {
+                    filteredRegions = regionsData.filter(region => region.category.includes('pariwisata'));
+                } else if (filter === 'pertanian') {
+                    filteredRegions = regionsData.filter(region => region.category.includes('pertanian'));
+                }
+            }
+            
+            container.innerHTML = filteredRegions.map(region => `
+                <div class="col-md-4 mb-4">
+                    <div class="card region-card">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                ${region.tags.map(tag => `<span class="badge ${region.type === 'kota' ? 'badge-city' : 'badge-regency'} me-1 mb-1">${tag}</span>`).join('')}
+                            </div>
+                            <h5 class="card-title">${region.name}</h5>
+                            <p class="card-text flex-grow-1">${region.description}</p>
+                            <div class="mt-3">
+                                <small class="text-muted d-block">
+                                    <i class="bi bi-people"></i> ${region.population} jiwa
+                                </small>
+                                <small class="text-muted d-block">
+                                    <i class="bi bi-geo-alt"></i> Luas: ${region.area}
+                                </small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary mt-3" onclick="showRegionDetail(${region.id})">
+                                <i class="bi bi-info-circle"></i> Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Function to show region detail
+        function showRegionDetail(id) {
+            const region = regionsData.find(r => r.id === id);
+            if (!region) return;
+            
+            // Create modal content
+            const modalContent = `
+                <div class="modal fade" id="regionDetailModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title"><i class="bi bi-building me-2"></i>${region.name}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <div class="bg-secondary rounded d-flex align-items-center justify-content-center" style="height: 200px;">
+                                            <i class="bi bi-building text-white" style="font-size: 3rem;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Profil Singkat</h5>
+                                        <p>${region.description}</p>
+                                        <p><strong>Luas Wilayah:</strong> ${region.area}</p>
+                                        <p><strong>Jumlah Penduduk:</strong> ${region.population}</p>
+                                        <p><strong>Jenis:</strong> ${region.type === 'kota' ? 'Kota' : 'Kabupaten'}</p>
+                                    </div>
+                                </div>
+                                
+                                <h5 class="border-bottom pb-2 mb-3">
+                                    <i class="bi bi-camera me-2"></i>Potensi Daerah
+                                </h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="tourist-spot">
+                                            <h6>1. Sektor Utama</h6>
+                                            <p class="mb-1">${region.category.includes('pertanian') ? 'Pertanian (Padi, Jagung)' : 
+                                                           region.category.includes('perikanan') ? 'Perikanan dan Kelautan' :
+                                                           region.category.includes('pariwisata') ? 'Pariwisata dan Budaya' :
+                                                           'Perdagangan dan Jasa'}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="tourist-spot">
+                                            <h6>2. Infrastruktur</h6>
+                                            <p class="mb-1">${region.type === 'kota' ? 'Infrastruktur perkotaan lengkap' : 'Infrastruktur pedesaan berkembang'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <button type="button" class="btn btn-primary">Kunjungi Website</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Remove existing modal if any
+            const existingModal = document.getElementById('regionDetailModal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+            
+            // Add modal to body
+            document.body.insertAdjacentHTML('beforeend', modalContent);
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('regionDetailModal'));
+            modal.show();
+        }
+
+        // Function to filter regions
+        function filterRegions(filter) {
+            renderRegions(filter);
+            
+            // Update active filter button
+            document.querySelectorAll('#kabupaten .btn-outline-primary').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Function to search regions
+        function setupSearch() {
+            const searchInput = document.getElementById('searchKabupaten');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const filteredRegions = regionsData.filter(region => 
+                        region.name.toLowerCase().includes(searchTerm) ||
+                        region.description.toLowerCase().includes(searchTerm) ||
+                        region.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                    );
+                    
+                    const container = document.getElementById('region-container');
+                    container.innerHTML = filteredRegions.map(region => `
+                        <div class="col-md-4 mb-4">
+                            <div class="card region-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="mb-2">
+                                        ${region.tags.map(tag => `<span class="badge ${region.type === 'kota' ? 'badge-city' : 'badge-regency'} me-1 mb-1">${tag}</span>`).join('')}
+                                    </div>
+                                    <h5 class="card-title">${region.name}</h5>
+                                    <p class="card-text flex-grow-1">${region.description}</p>
+                                    <div class="mt-3">
+                                        <small class="text-muted d-block">
+                                            <i class="bi bi-people"></i> ${region.population} jiwa
+                                        </small>
+                                        <small class="text-muted d-block">
+                                            <i class="bi bi-geo-alt"></i> Luas: ${region.area}
+                                        </small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary mt-3" onclick="showRegionDetail(${region.id})">
+                                        <i class="bi bi-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                });
+            }
+        }
+
+        // Function to create IPKD chart
+        function createIPKDChart() {
+            const ctx = document.getElementById('ipkdChart');
+            if (!ctx) return;
+            
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023', '2024'],
+                    datasets: [
+                        {
+                            label: 'IPKD Total',
+                            data: [78.2, 80.1, 82.3, 83.1, 85.6],
+                            borderColor: '#2b66bf',
+                            backgroundColor: 'rgba(43, 102, 191, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Tata Kelola',
+                            data: [76.5, 78.2, 80.4, 83.1, 85.6],
+                            borderColor: '#198754',
+                            backgroundColor: 'rgba(25, 135, 84, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Pelayanan Publik',
+                            data: [75.8, 77.5, 79.2, 79.2, 82.3],
+                            borderColor: '#fd7e14',
+                            backgroundColor: 'rgba(253, 126, 20, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 70,
+                            max: 90,
+                            title: {
+                                display: true,
+                                text: 'Skor IPKD'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to handle contact form
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // In a real application, you would send this data to a server
+                    // For demo purposes, we'll just show an alert
+                    alert(`Terima kasih ${name}! Pesan Anda telah dikirim.\nKami akan membalas ke email: ${email}`);
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home section by default
+            showSection('home');
+            
+            // Initialize regions
+            renderRegions();
+            
+            // Setup search functionality
+            setupSearch();
+            
+            // Create IPKD chart
+            createIPKDChart();
+            
+            // Setup contact form
+            setupContactForm();
+            
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+            
+            // Handle tab click for section switching
+            const tabLinks = document.querySelectorAll('.custom-tabs .nav-link');
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('href');
+                    document.querySelectorAll('.custom-tabs .nav-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('show', 'active'));
+                    this.classList.add('active');
+                    document.querySelector(tabId).classList.add('show', 'active');
+                });
+            });
+        });
+
+        // Handle URL hash changes
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showSection(hash);
+            }
+        });
+
+        // Handle page load with hash
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showSection(hash);
+            }
+        });
+    </script>
+</body>
+</html>
